@@ -85,7 +85,7 @@ export class AuthProvider {
     return new Promise((resolve, reject) => {
       let token = localStorage.getItem('token');
       this.http.post(`${this.PATH}${this.user_url}${this.profile_url}`, token, {headers: this.headers})
-        .subscribe((res) => {
+        .subscribe((res: User) => {
           resolve(res);
         }, (err) => {
           reject(err);

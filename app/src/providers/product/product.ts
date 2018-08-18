@@ -5,7 +5,8 @@ import { Unit } from '../../models/unit/unit.interface';
 
 @Injectable()
 export class ProductProvider {
-  private PATH: string = 'http://192.168.0.102:8080/coderaceapi-0.0.1-SNAPSHOT/';
+  //private PATH: string = 'http://192.168.0.102:8080/coderaceapi-0.0.1-SNAPSHOT/';
+  private PATH: string = 'http://192.168.0.100:8080/app/';
   private product_url: string = 'product/';
   private unit_url: string = 'unit/';
 
@@ -44,5 +45,5 @@ export class ProductProvider {
       })
     });
   }
-  
+
 }
