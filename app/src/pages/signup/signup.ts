@@ -1,3 +1,5 @@
+import { AuthProvider } from './../../providers/auth/auth';
+import { User } from './../../models/user/user.interface';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -14,8 +16,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'signup.html',
 })
 export class SignupPage {
+  user = {} as User;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private auth : AuthProvider) {
+
+  }
+
+  register() {
+    this.auth.signUp(this.user);
   }
 
   ionViewDidLoad() {

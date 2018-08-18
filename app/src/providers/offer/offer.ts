@@ -1,17 +1,56 @@
+import { Offer } from './../../models/offer/offer.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-/*
-  Generated class for the OfferProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class OfferProvider {
+  private PATH:string = '';
 
-  constructor(public http: HttpClient) {
-    console.log('Hello OfferProvider Provider');
+  constructor(private http: HttpClient) {
+  }
+
+  getAll() {
+    return new Promise((resolve, reject) => {
+      this.http.get(`${this.PATH}`)
+        .subscribe((res: Offer[]) => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        })
+    });
+  }
+
+  getOne(offer: Offer) {
+    return new Promise((resolve, reject) => {
+      this.http.get(`${this.PATH}`)
+      .subscribe((res: Offer) => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      })
+    });
+  }
+
+  save(offer: Offer) {
+    return new Promise((resolve, reject) => {
+      this.http.post(`${this.PATH}`, { 'offer': offer })
+        .subscribe((res: Offer) => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        })
+    });
+  }
+
+  delete(offer: Offer) {
+    return new Promise((resolve, reject) => {
+      this.http.post(`${this.PATH}`, { 'offer': offer })
+      .subscribe((res: Offer) => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      })
+    });
   }
 
 }

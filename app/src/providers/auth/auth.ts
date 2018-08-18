@@ -5,46 +5,32 @@ import { Token } from '../../models/token/token.interface';
 
 @Injectable()
 export class AuthProvider {
-  private PATH: string;
+  private PATH: string = 'http://192.168.0.102:8080/coderaceapi-0.0.1-SNAPSHOT/';
+  private user_url: string = 'user/';
+  private update_url: string = 'update/';
+  private register_url: string = 'register/';
+  private auth_url: string = 'auth/';
+  private signout_url: string = 'signout/';
+  private gen_token: string = 'generatetoken/';
+  private headers = new HttpHeaders({'Content-Type':'application/json'});
 
-  constructor(private http: HttpClient,
+  constructor(private http: HttpClient,) { }
 
-  ) {
-
-  }
-
-  teste() {
-    console.log('Entrou no auth');
-
-
-    //let path = 'http://192.168.0.102:8080/coderaceapi-0.0.1-SNAPSHOT/user/generatetoken';
-    let path = 'http://192.168.0.100:8080/app/user/generatetoken';
-    let headers = new HttpHeaders({'Content-Type':'application/json'});
-    // let headers = new HttpHeaders();
-    // headers.append('Access-Control-Allow-Origin' , '*');
-    // headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
-    // headers.append('Accept','application/json');
-    // headers.append('content-type','application/json');
-    // const httpOptions = {headers : headers};
+  revalidateToken(token: string) {
     return new Promise((resolve, reject) => {
-      this.http.post(`${path}`, {
-        'login': 'angrymouse',
-        'password': 'senha'
-      }, {headers: headers})
-        .subscribe((res) => {
-          console.log('Entrou no resolve');
+      this.http.post(`${this.PATH}${this.user_url}${this.auth_url}`, {'token': token }, {headers: this.headers})
+        .subscribe((res: Token) => {
+          localStorage.setItem('token', res.token);
           resolve(res);
         }, (err) => {
-          console.log('Entrou no reject');
           reject(err);
         });
     });
   }
 
-  signIn(user: User) {
+  generateToken(user: User) {
     return new Promise((resolve, reject) => {
-
-      this.http.post(`${this.PATH}`, user)
+      this.http.post(`${this.PATH}${this.user_url}${this.gen_token}`, {'user': user}, {headers: this.headers})
         .subscribe((res: Token) => {
           localStorage.setItem('token', res.token);
           resolve(res);
@@ -57,10 +43,9 @@ export class AuthProvider {
   save(user: User) {
     return new Promise((resolve, reject) => {
       let token = localStorage.getItem('token');
-
-      this.http.post(`${this.PATH}`, {
-        token: token,
-        user: user,
+      this.http.post(`${this.PATH}${this.user_url}${this.update_url}`, {
+        'token': token,
+        'user': user,
       })
         .subscribe((res) => {
           resolve(res);
@@ -72,7 +57,7 @@ export class AuthProvider {
 
   signUp(user: User) {
     return new Promise((resolve, reject) => {
-      this.http.post(`${this.PATH}`, user)
+      this.http.post(`${this.PATH}${this.user_url}${this.register_url}`, user)
         .subscribe((res) => {
           resolve(res);
         }, (err) => {
@@ -84,7 +69,7 @@ export class AuthProvider {
   signOut() {
     return new Promise((resolve, reject) => {
       let token = localStorage.getItem('token');
-      this.http.post(`${this.PATH}`, token)
+      this.http.post(`${this.PATH}${this.user_url}${this.signout_url}`, token)
         .subscribe((res) => {
           resolve(res);
         }, (err) => {
