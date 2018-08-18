@@ -1,0 +1,12 @@
+<ion-searchbar [(ngModel)]="query" (ionChange)="searchProduct()">
+</ion-searchbar>
+<ion-list *ngIf=" products?.length > 0 ">
+
+  <ion-item *ngFor="let product of products" (click)="selectProduct(product)">
+    <ion-avatar item-left class="padding-top-8">
+      <ion-icon name="happy"></ion-icon>
+    </ion-avatar>
+    <h2>{{product}}</h2>
+  </ion-item>
+
+</ion-list> 
