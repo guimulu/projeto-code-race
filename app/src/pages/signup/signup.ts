@@ -1,14 +1,7 @@
 import { AuthProvider } from './../../providers/auth/auth';
 import { User } from './../../models/user/user.interface';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -18,16 +11,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class SignupPage {
   user = {} as User;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth : AuthProvider) {
+  constructor(private navCtrl: NavController, private auth : AuthProvider,
+  private toastCtrl: ToastController
+  ) {
 
   }
 
   register() {
-    this.auth.signUp(this.user);
+    this.auth.signUp(this.user)
+      .then(() => {
+        this.navCtrl.pop();
+        this.message('Cadastrado com sucesso!');
+      })
+      .catch(() => {
+        this.message('Erro ao cadastrar, verifique os campos inseridos!');
+      });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+  message(message: string) {
+    this.toastCtrl.create({
+      position: 'bottom',
+      duration: 3000,
+      message: message
+    }).present();
   }
 
 }

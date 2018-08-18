@@ -13,6 +13,7 @@ export class AuthProvider {
   private signout_url: string = 'signout/';
   private gen_token: string = 'generatetoken/';
   private headers = new HttpHeaders({'Content-Type':'application/json'});
+  private profile_url: string = 'profile/';
 
   constructor(private http: HttpClient,) { }
 
@@ -76,6 +77,18 @@ export class AuthProvider {
           reject(err);
         });
     });
+  }
+
+  getProfile() {
+    return new Promise((resolve, reject) => {
+      let token = localStorage.getItem('token');
+      this.http.post(`${this.PATH}${this.user_url}${this.profile_url}`, token)
+        .subscribe((res) => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        })
+    })
   }
 
 }
