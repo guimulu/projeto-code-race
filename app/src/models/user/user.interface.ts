@@ -4,7 +4,7 @@ import { Consumer } from "../consumer/consumer.interface";
 
 export interface User {
     id: number;
-    nome: string;
+    name: string;
     password: string;
     email: string;
     city: City;
