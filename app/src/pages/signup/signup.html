@@ -3,15 +3,19 @@
       <ion-card-content>
         <ion-item>
           <ion-label floating>Login</ion-label>
-          <ion-input type="login"></ion-input>
+          <ion-input [{ngModel}]="user.login" type="login"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>Email</ion-label>
-          <ion-input type="email"></ion-input>
+          <ion-input [{ngModel}]="user.email" type="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Cidade</ion-label>
+          <ion-input [{ngModel}]="user.city" type="cidade"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>Senha</ion-label>
-          <ion-input type="password"></ion-input>
+          <ion-input [{ngModel}]="user.password" type="password"></ion-input>
         </ion-item>
       </ion-card-content>
       <ion-row class="login-form__buttons">
