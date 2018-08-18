@@ -2,7 +2,7 @@ import { HomePageModule } from './../../pages/home/home.module';
 import { User } from './../../models/user/user.interface';
 import { Component, Output, EventEmitter } from '@angular/core';
 import { AuthProvider } from '../../providers/auth/auth';
-import { ToastController } from 'ionic-angular/umd';
+import { ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'app-profile',
