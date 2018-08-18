@@ -18,6 +18,8 @@ public class User {
 	@GeneratedValue
 	private Long id;
 	
+	private String name;
+	
 	private String login;
 	
 	@JsonProperty(access=Access.WRITE_ONLY)
