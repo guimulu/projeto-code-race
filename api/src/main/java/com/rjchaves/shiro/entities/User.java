@@ -27,7 +27,10 @@ public class User {
 
 	private String email;
 	
-	@OneToOne(optional=false)
-	private City city;
+	@OneToOne
+	private Consumer consumer;
+	
+	@OneToOne
+	private Producer producer;
 	
 }
