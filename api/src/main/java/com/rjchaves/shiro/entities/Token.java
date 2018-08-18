@@ -3,6 +3,7 @@ package com.rjchaves.shiro.entities;
 import java.util.Calendar;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -13,6 +14,7 @@ import lombok.Data;
 public class Token {
 	
 	@Id
+	@GeneratedValue
 	private Long id;
 	
 	private Calendar expirationDate;

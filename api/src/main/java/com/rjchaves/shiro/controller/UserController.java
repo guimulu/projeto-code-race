@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import com.rjchaves.shiro.repository.UserRepository;
 
 @RestController
 @RequestMapping("user")
+@CrossOrigin
 public class UserController {
 	
 	@Autowired
@@ -43,6 +45,7 @@ public class UserController {
 		expirationDate.add(Calendar.DAY_OF_MONTH, 30);
 		
 		token.setExpirationDate(expirationDate);
+		token.setToken(SecurityUtils.generateAuthToken());
 		
 		tokenRepository.save(token);
 		return ResponseEntity.ok(token);
