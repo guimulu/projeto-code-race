@@ -16,5 +16,5 @@ public class City {
 	private String name;
 	
 	@OneToOne(optional=true)
-	private UF state;
+	private UF uf;
 }
