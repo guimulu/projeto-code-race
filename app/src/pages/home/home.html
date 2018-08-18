@@ -8,5 +8,40 @@
 
 
 <ion-content padding>
+  <div>
+    <ion-segment [(ngModel)]="transacao">
+      <ion-segment-button value="compras">
+        Compras
+      </ion-segment-button>
+      <ion-segment-button value="vendas">
+        Vendas
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
+  <div [ngSwitch]="transacao">
+    <ion-list *ngSwitchCase="'compras'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="https://cdn.icon-icons.com/icons2/881/PNG/512/Carrot_icon-icons.com_68773.png">
+        </ion-thumbnail>
+        <h2>R$ 16,00</h2>
+        <p>Cenoura</p>
+        <p>Saule dos Santos</p>
+        <p clear item-end>17 ago</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'vendas'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="https://png.icons8.com/color/1600/lettuce.png">
+        </ion-thumbnail>
+        <h2>R$ 10,00</h2>
+        <p>Alface</p>
+        <p>Jose Francisco</p>
+        <p clear item-end>15 ago</p>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
