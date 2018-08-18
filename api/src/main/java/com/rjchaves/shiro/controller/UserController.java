@@ -50,5 +50,15 @@ public class UserController {
 		tokenRepository.save(token);
 		return ResponseEntity.ok(token);
 	}
+	
+	@PostMapping("/auth")
+	public ResponseEntity<Token> revalidateToken(@RequestBody Token token) {
+		Optional<Token> optionalToken = tokenRepository.findByTokenAndExpirationDateGreaterThan(token.getToken(), Calendar.getInstance());
+		
+		if (!optionalToken.isPresent() ) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+		}
+		return ResponseEntity.ok().body(null);
+	}
 
 }
