@@ -1,0 +1,37 @@
+<ion-card>
+  <ion-card-content>
+    <ion-item>
+      <ion-label floating>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="profile"></ion-input>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
+
+<div padding>
+  <ion-segment [(ngModel)]="profile">
+    <ion-segment-button value="comprador">
+      Comprador
+    </ion-segment-button>
+    <ion-segment-button value="produtor">
+      Produtor
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+<div [ngSwitch]="profile">
+  <ion-list *ngSwitchCase="'comprador'">
+    <ion-item>
+      <ion-label floating>Oi</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'produtor'">
+    <ion-item>
+      <ion-label floating>Oi</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+  </ion-list>
+</div>
+<button ion-button block (click)="saveProfile()">Salvar</button>
+<button ion-button block outline color="secondary" (click)="signout()">Sair</button>
