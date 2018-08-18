@@ -20,8 +20,6 @@ public class User {
 	
 	private String name;
 	
-	private String login;
-	
 	@JsonProperty(access=Access.WRITE_ONLY)
 	private String password;
 

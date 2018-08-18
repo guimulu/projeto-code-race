@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rjchaves.shiro.entities.Product;
+import com.rjchaves.shiro.entities.Unit;
 import com.rjchaves.shiro.repository.ProductRepository;
+import com.rjchaves.shiro.repository.UnitRepository;
 
 @RestController
 @RequestMapping("product")
@@ -23,9 +25,18 @@ public class ProductController {
 	@Autowired
 	private ProductRepository productRepository;
 	
+	@Autowired
+	private UnitRepository unitRepository;
+	
+	
 	@RequestMapping("/")
 	public @ResponseBody List<Product> find() {
 		return productRepository.findAll();
+	}
+	
+	@RequestMapping("/unit")
+	public @ResponseBody List<Unit> findUnit() {
+		return unitRepository.findAll();
 	}
 	
 	@RequestMapping("/{id}")
