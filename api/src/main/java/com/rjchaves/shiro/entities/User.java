@@ -6,23 +6,34 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
 public class User {
 	
 	@Id
 	private Long id;
 	
+	@Getter @Setter 
 	private String login;
 	
-	@JsonIgnore
 	private String password;
+
+	@Getter @Setter 
 	private String email;
-	private String token;
 	
 	@OneToOne(optional=false)
+	@Getter @Setter 
 	private City city;
+	
+	@JsonIgnore
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
 }

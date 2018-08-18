@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class ShiroExampleApplication extends SpringBootServletInitializer {
@@ -16,4 +17,11 @@ public class ShiroExampleApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(ShiroExampleApplication.class, args);
 	}
+	
+//	@Bean
+//	PasswordEncoder passwordEncoder() {
+//		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//		passwordEncoder.setDefaultPasswordEncoderForMatches(new MessageDigestPasswordEncoder("SHA-256"));
+//		return passwordEncoder;
+//	}
 }
