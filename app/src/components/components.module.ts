@@ -1,9 +1,12 @@
 import { IonicPageModule } from 'ionic-angular';
 import { NgModule } from '@angular/core';
 import { SearchComponent } from './search/search.component';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
-	declarations: [SearchComponent],
+	declarations: [SearchComponent,
+    ProfileComponent],
 	imports: [IonicPageModule],
-	exports: [SearchComponent]
+	exports: [SearchComponent,
+    ProfileComponent]
 })
 export class ComponentsModule {}
