@@ -8,5 +8,31 @@
 
 
 <ion-content padding>
-
+    quantity: number,
+    producer: Producer,
+    product: Product,
+    unit: Unit
+    <ion-card>
+        <ion-card-content>
+          <ion-item>
+            <ion-label floating>Quantidade</ion-label>
+            <ion-input [(ngModel)]="offer.quantity" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Produto</ion-label>
+            <ion-select *ngFor="let product of products" (ionChange)="selectProduct(product)">
+              <ion-option value="{{ product.id }}">{{ product.name }}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>Unit</ion-label>
+            <ion-select *ngFor="let unit of units" (ionChange)="selectUnit(unit)">
+              <ion-option value="{{ unit.id }}">{{ unit.name }}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-card-content>
+        <ion-row>
+            <button ion-button block (click)="inserirOffer()">Cadastrar</button>
+        </ion-row>
+      </ion-card>
 </ion-content>

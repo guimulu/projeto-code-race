@@ -1,8 +1,18 @@
 <ion-card>
   <ion-card-content>
     <ion-item>
-      <ion-label floating>Nome</ion-label>
-      <ion-input type="text" [(ngModel)]="profile"></ion-input>
+      <ion-item>
+        <ion-label floating>Login</ion-label>
+        <ion-input [(ngModel)]="user.login" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input [(ngModel)]="user.email" type="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Senha</ion-label>
+        <ion-input [(ngModel)]="user.password" type="password"></ion-input>
+      </ion-item>
     </ion-item>
   </ion-card-content>
 </ion-card>
@@ -20,16 +30,18 @@
 
 <div [ngSwitch]="profile">
   <ion-list *ngSwitchCase="'comprador'">
-    <ion-item>
-      <ion-label floating>Oi</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
+    <<ion-item>
+        <ion-label floating>Login</ion-label>
+        <ion-input [(ngModel)]="user.consumer" type="text"></ion-input>
+      </ion-item>
   </ion-list>
 
   <ion-list *ngSwitchCase="'produtor'">
     <ion-item>
-      <ion-label floating>Oi</ion-label>
-      <ion-input></ion-input>
+      <ion-item>
+        <ion-label floating>Login</ion-label>
+        <ion-input [(ngModel)]="user.login" type="text"></ion-input>
+      </ion-item>
     </ion-item>
   </ion-list>
 </div>

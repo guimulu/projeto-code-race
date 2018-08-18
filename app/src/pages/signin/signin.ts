@@ -9,7 +9,7 @@ import { IonicPage, NavController, ToastController } from 'ionic-angular';
   templateUrl: 'signin.html',
 })
 export class SigninPage {
-  user: User;
+  user = {} as User;
 
   constructor(private navCtrl: NavController, private auth: AuthProvider,
     private toastCtrl: ToastController
@@ -19,15 +19,20 @@ export class SigninPage {
   signin() {
     this.auth.generateToken(this.user)
       .then((res) => {
-        this.navCtrl.push('HomeTabsPage');
+        this.navCtrl.setRoot('HomeTabsPage');
+        this.message('Authenticado com sucesso!');
       })
       .catch((e) => {
-        this.toastCtrl.create({
-          position: 'bottom',
-          duration: 3000,
-          message: 'Erro ao fazer login, verifique suas credenciais!'
-        }).present();
+        this.message('Erro ao fazer login, verifique suas credenciais!');
       });
+  }
+
+  message(message: string) {
+    this.toastCtrl.create({
+      position: 'bottom',
+      duration: 3000,
+      message: message
+    }).present();
   }
 
   signup() {

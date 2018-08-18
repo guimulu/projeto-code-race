@@ -4,14 +4,14 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class OfferProvider {
-  private PATH:string = '';
+  private PATH: string = 'http://192.168.0.102:8080/coderaceapi-0.0.1-SNAPSHOT/';
+  private offer_url: string = 'offer/';
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   getAll() {
     return new Promise((resolve, reject) => {
-      this.http.get(`${this.PATH}`)
+      this.http.get(`${this.PATH}${this.offer_url}`)
         .subscribe((res: Offer[]) => {
           resolve(res);
         }, (err) => {
@@ -22,7 +22,7 @@ export class OfferProvider {
 
   getOne(offer: Offer) {
     return new Promise((resolve, reject) => {
-      this.http.get(`${this.PATH}`)
+      this.http.get(`${this.PATH}${this.offer_url}${offer.id}`)
       .subscribe((res: Offer) => {
         resolve(res);
       }, (err) => {
@@ -33,7 +33,9 @@ export class OfferProvider {
 
   save(offer: Offer) {
     return new Promise((resolve, reject) => {
-      this.http.post(`${this.PATH}`, { 'offer': offer })
+      let token = localStorage.getItem('token');
+
+      this.http.post(`${this.PATH}${this.offer_url}`, { 'offer': offer, token })
         .subscribe((res: Offer) => {
           resolve(res);
         }, (err) => {
@@ -44,8 +46,8 @@ export class OfferProvider {
 
   delete(offer: Offer) {
     return new Promise((resolve, reject) => {
-      this.http.post(`${this.PATH}`, { 'offer': offer })
-      .subscribe((res: Offer) => {
+      this.http.delete(`${this.PATH}${this.offer_url}${offer.id}`)
+      .subscribe((res) => {
         resolve(res);
       }, (err) => {
         reject(err);
