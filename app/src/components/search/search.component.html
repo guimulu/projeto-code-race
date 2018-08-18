@@ -1,5 +1,10 @@
-<ion-searchbar [(ngModel)]="query" (ionChange)="searchProduct()">
-</ion-searchbar>
+<div class="search-bloco ">
+  <ion-searchbar [(ngModel)]="query" (ionChange)="searchProduct()">
+  </ion-searchbar>
+  <button ion-button icon-only item-end>
+    <ion-icon name="funnel"></ion-icon>
+  </button>
+</div>
 <ion-list *ngIf=" products?.length > 0 ">
 
   <ion-item *ngFor="let product of products" (click)="selectProduct(product)">
@@ -9,4 +14,4 @@
     <h2>{{product}}</h2>
   </ion-item>
 
-</ion-list> 
+</ion-list>

@@ -8,8 +8,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
   title: string = 'Bem Vindo!';
+  transacao: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.transacao = "compras";
   }
 
   ionViewDidLeave(){
