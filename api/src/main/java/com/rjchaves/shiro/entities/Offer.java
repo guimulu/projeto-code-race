@@ -4,25 +4,25 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Data;
 
 @Entity
 @Data
-public class User {
+public class Offer {
 	
 	@Id
 	private Long id;
 	
-	private String login;
-	
-	@JsonIgnore
-	private String password;
-	private String email;
-	private String token;
+	@OneToOne(optional=false)
+	private Producer producer;
 	
 	@OneToOne(optional=false)
-	private City city;
+	private Product product;
+	
+	@OneToOne(optional=false)
+	private Unit unit;
+	
+	private Long quantity;
+	
 	
 }
