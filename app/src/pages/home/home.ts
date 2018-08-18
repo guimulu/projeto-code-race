@@ -23,9 +23,6 @@ export class HomePage {
 
   teste() {
     console.log('Entrou no ts');
-    this.auth.teste()
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
   }
 
 }
