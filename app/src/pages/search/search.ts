@@ -3,17 +3,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+  selector: 'page-search',
+  templateUrl: 'search.html',
 })
-export class HomePage {
-  title: string = 'Bem Vindo!';
+export class SearchPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLeave(){
-    this.title = 'Início';
   }
 
 }
