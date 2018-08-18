@@ -33,7 +33,7 @@ export class AuthProvider {
 
   generateToken(user: User) {
     return new Promise((resolve, reject) => {
-      this.http.post(`${this.PATH}${this.user_url}${this.gen_token}`, {'user': user}, {headers: this.headers})
+      this.http.post(`${this.PATH}${this.user_url}${this.gen_token}`, user, {headers: this.headers})
         .subscribe((res: Token) => {
           localStorage.setItem('token', res.token);
           resolve(res);
