@@ -9,5 +9,7 @@ import com.rjchaves.shiro.entities.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-	public Optional<User> findByLoginAndPassword(String login, String password);
+	public Optional<User> findByEmailAndPassword(String email, String password);
+	
+	public Optional<User> findByEmail(String email);
 }
