@@ -1,0 +1,25 @@
+public class City {
+	private Long id;
+	private String name;
+	private UF state;
+}
+
+public class Consumer {
+	private Long id;
+}
+
+public class Producer {
+	private Long id;
+}
+
+public class UF {
+	private Long id;
+	private String name;
+	private String initials;
+}
+
+public class User {
+	private Long id;
+	private String login;
+	private String password;
+}

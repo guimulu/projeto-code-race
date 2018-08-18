@@ -7,12 +7,11 @@ import lombok.Data;
 
 @Entity
 @Data
-public class User {
+public class Producer {
 	
 	@Id
 	private Long id;
 	
-	private String login;	
-	private String password;
+	
 	
 }

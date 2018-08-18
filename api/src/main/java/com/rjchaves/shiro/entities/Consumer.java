@@ -7,12 +7,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class User {
-	
+public class Consumer {
 	@Id
 	private Long id;
-	
-	private String login;	
-	private String password;
-	
 }
