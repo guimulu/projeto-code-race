@@ -8,17 +8,29 @@ export class AuthProvider {
   private PATH: string;
 
   constructor(private http: HttpClient,
-              
+
   ) {
-    
+
   }
 
   teste() {
     console.log('Entrou no auth');
-    //let path = 'http://192.168.0.102:8080/coderaceapi-0.0.1-SNAPSHOT/';
+
+
+    //let path = 'http://192.168.0.102:8080/coderaceapi-0.0.1-SNAPSHOT/user/generatetoken';
     let path = 'http://192.168.0.100:8080/app/user/generatetoken';
+    let headers = new HttpHeaders({'Content-Type':'application/json'});
+    // let headers = new HttpHeaders();
+    // headers.append('Access-Control-Allow-Origin' , '*');
+    // headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+    // headers.append('Accept','application/json');
+    // headers.append('content-type','application/json');
+    // const httpOptions = {headers : headers};
     return new Promise((resolve, reject) => {
-      this.http.post(`${path}`, {}) 
+      this.http.post(`${path}`, {
+        'login': 'angrymouse',
+        'password': 'senha'
+      }, {headers: headers})
         .subscribe((res) => {
           console.log('Entrou no resolve');
           resolve(res);
