@@ -2,8 +2,8 @@
     <ion-card>
       <ion-card-content>
         <ion-item>
-          <ion-label floating>Login</ion-label>
-          <ion-input [(ngModel)]="user.login" type="login"></ion-input>
+          <ion-label floating>Nome</ion-label>
+          <ion-input [(ngModel)]="user.nome" type="nome"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>Email</ion-label>
@@ -16,8 +16,8 @@
       </ion-card-content>
       <ion-row class="login-form__buttons">
         <div>
-          <button ion-button color="secondary">Voltar</button>
-          <button ion-button>Cadastrar</button>
+          <button ion-button color="secondary" (click)="voltar()">Voltar</button>
+          <button ion-button (click)="register()">Cadastrar</button>
         </div>
       </ion-row>
     </ion-card>

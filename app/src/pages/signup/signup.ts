@@ -28,6 +28,10 @@ export class SignupPage {
       });
   }
 
+  voltar() {
+    this.navCtrl.pop();
+  }
+
   message(message: string) {
     this.toastCtrl.create({
       position: 'bottom',
