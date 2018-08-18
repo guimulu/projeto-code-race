@@ -1,0 +1,20 @@
+.login-form__buttons {
+  padding: 10px;
+  align-items: center;
+
+  div button:nth-of-type(1) {
+      margin-right: 10px;
+  }
+}
+
+.item-md {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.card-md{
+  background: rgba(255, 255, 255, 0.45);
+}
+
+ion-content.signin{
+  background-image: url("/assets/imgs/login-background.png");
+}
