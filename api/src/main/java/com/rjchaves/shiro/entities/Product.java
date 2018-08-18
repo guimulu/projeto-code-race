@@ -18,7 +18,7 @@ public class Product {
 	@GeneratedValue
 	private Long id;
 	
-	private String Name;
+	private String name;
 	
 	@OneToMany
 	@JoinColumn(name = "product_id")

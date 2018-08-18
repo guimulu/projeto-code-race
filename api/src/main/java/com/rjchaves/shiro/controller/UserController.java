@@ -36,7 +36,7 @@ public class UserController {
 	
 	@PostMapping("/generatetoken")
 	public ResponseEntity<Token> login(@RequestBody User user) {
-		Optional<User> userOptional = userRepository.findByEmailAndPassword(user.getLogin(), user.getPassword());
+		Optional<User> userOptional = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
 		if(!userOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 		}
@@ -70,7 +70,7 @@ public class UserController {
 	@PostMapping("/register")
 	public ResponseEntity<User> registerUser(@RequestBody User user) {
 		Optional<User> optionalUser = userRepository.findByEmail(user.getEmail());
-		if (!optionalUser.isPresent()) {
+		if (optionalUser.isPresent()) {
 			return ResponseEntity.badRequest().body(null);
 		}
 		return ResponseEntity.ok().body(userRepository.save(user));
