@@ -9,7 +9,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:string;
+  rootPage:string = 'SigninPage';
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
     private auth: AuthProvider
@@ -17,19 +17,7 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      let token = localStorage.getItem('token');
-      if( token != null) {
-        this.auth.revalidateToken(token)
-          .then((token: Token) => {
-            localStorage.setItem('token', token.token);
-            this.rootPage = 'HomeTabsPage';
-          })
-          .catch((e) => {
-            this.rootPage = 'SigninPage';
-          });
-      } else {
-        this.rootPage = 'SigninPage';
-      }
+
       statusBar.styleDefault();
       splashScreen.hide();
     });

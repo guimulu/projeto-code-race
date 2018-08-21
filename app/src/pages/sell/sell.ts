@@ -14,7 +14,7 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'sell.html',
 })
 export class SellPage {
-  offer: Offer;
+  offer = {} as Offer;
   user: User;
   products: Product[];
   units: Unit[];
@@ -61,7 +61,7 @@ export class SellPage {
       })
       .catch();
   }
-  
+
 
 
 }
